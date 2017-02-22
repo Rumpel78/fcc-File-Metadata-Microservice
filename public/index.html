@@ -15,6 +15,13 @@
                 <ul>1) I can submit a FormData object that includes a file upload</ul>
                 <ul>2) When I submit something, I will receive the file size in bytes within the JSON response</ul>
             </blockquote>
+            <div>
+                <p>Submit a file to view its filesize.</p>
+                <form method="post" enctype="multipart/form-data" action="/upload">
+                    <input name="file" type="file"> 
+                    <input type="Submit">
+                </form>
+            </div>
         </div>
     </body>
 </html>
