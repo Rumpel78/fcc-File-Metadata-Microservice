@@ -17,9 +17,9 @@ html(lang="en")
 
             blockquote
                 p Submit a file to view its filesize.
-                form( method="post" enctype="multipart/form-data" action="/upload")
+                form( method="post" enctype="multipart/form-data" action=basePath+"/upload")
                     input(name="file" type="file")
                     input(type="Submit")
             div
                 br
-                a(href=home) More freeCodeCamp apps
+                a(href=baseUrl) More freeCodeCamp apps

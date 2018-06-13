@@ -10,14 +10,16 @@ app.use(express.static('public'));
 
 app.set('view engine', 'pug');
 
-app.get('/', function (req, res) {
-  var mainDomain = req.hostname.substr(req.hostname.indexOf('.') + 1);
-  var baseHome = req.protocol + '://' + mainDomain + ':' + port
+var mainRouter = express.Router();
+var basePath = process.env.BASEPATH || '';
+app.use(basePath, mainRouter);
 
-  res.render('index', { home: baseHome });
+mainRouter.get('/', function (req, res) {
+  var baseUrl = req.protocol + '://' + req.hostname;
+  res.render('index', { baseUrl, basePath });
 });
 
-app.post('/upload', upload.single('file'), function (req, res) {
+mainRouter.post('/upload', upload.single('file'), function (req, res) {
   var size = req.file.size;
   res.setHeader('Content-Type', 'application/json')
   res.send(JSON.stringify({ size: size }))
